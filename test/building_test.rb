@@ -50,4 +50,14 @@ class BuildingTest < Minitest::Test
     assert_equal @building.renter_with_highest_rent, @renter2
   end
 
+  def test_annual_breakdown
+    @building.add_unit(@unit1)
+    @building.add_unit(@unit2)
+    @building.add_unit(@unit3)
+    @unit2.add_renter(@renter1)
+    @building.annual_breakdown
+    expected = {"Spencer"=>11988}
+    assert_equal expected, @building.annual_breakdown
+  end
+
 end

@@ -2,10 +2,11 @@ require 'pry'
 
 class Building
 
-attr_reader :units
+attr_reader :units, :annual_breakdown
 
   def initialize()
     @units = []
+    @annual_breakdown = {}
   end
 
   def add_unit(new_unit)
@@ -35,6 +36,18 @@ attr_reader :units
           end
         end
     end
-  return high_rent_renter.renter
-end
+    return high_rent_renter.renter
+  end
+
+
+  def annual_breakdown
+    year_rent = 0
+      @units.each do |unit|
+        if unit.renter != nil
+          year_rent = (unit.monthly_rent * 12 )
+          @annual_breakdown[unit.renter.name] = year_rent
+        end
+      end
+      return @annual_breakdown
+  end
 end
