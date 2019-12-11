@@ -1,3 +1,5 @@
+require 'pry'
+
 class Building
 
 attr_reader :units
@@ -19,4 +21,20 @@ attr_reader :units
     average_rent = (average_rent/@units.count)
     return average_rent
   end
+
+  def renter_with_highest_rent
+    #iterate through units with renter
+    #use each to only store the unit that has a renter AND the highest rent
+    high_rent_renter = nil
+    @units.each do |unit|
+        if (unit.renter != nil && (high_rent_renter == nil))
+          high_rent_renter = unit
+        elsif (unit.renter != nil && (high_rent_renter != nil))
+          if high_rent_renter.monthly_rent < unit.monthly_rent
+            high_rent_renter = unit
+          end
+        end
+    end
+  return high_rent_renter.renter
+end
 end
