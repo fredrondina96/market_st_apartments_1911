@@ -27,5 +27,10 @@ class BuildingTest < Minitest::Test
     assert_equal @building.units[1], @unit2
   end
 
+  def test_average_rent
+    @building.add_unit(@unit1)
+    @building.add_unit(@unit2)
+    assert_equal 1099.5, @building.average_rent
+  end
 
 end
