@@ -14,7 +14,6 @@ attr_reader :units, :annual_breakdown
   end
 
   def average_rent
-    #use iteration to sum the .monthly_rent of units
     average_rent = 0.0
     @units.each do |unit|
       average_rent += unit.monthly_rent
@@ -24,8 +23,6 @@ attr_reader :units, :annual_breakdown
   end
 
   def renter_with_highest_rent
-    #iterate through units with renter
-    #use each to only store the unit that has a renter AND the highest rent
     high_rent_renter = nil
     @units.each do |unit|
         if (unit.renter != nil && (high_rent_renter == nil))
@@ -38,7 +35,6 @@ attr_reader :units, :annual_breakdown
     end
     return high_rent_renter.renter
   end
-
 
   def annual_breakdown
     year_rent = 0
