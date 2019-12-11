@@ -12,7 +12,6 @@ class ApartmentTest < Minitest::Test
 
   def test_apartment_exists
     assert_instance_of Apartment, @unit1
-
   end
 
   def test_attributes_are_stored_in_hash
@@ -22,4 +21,10 @@ class ApartmentTest < Minitest::Test
     assert_equal 1, @unit1.attributes[:bedrooms]
   end
 
+  def test_attributes_can_be_accessed_with_method
+    assert_equal "A1", @unit1.number
+    assert_equal 1200, @unit1.monthly_rent
+    assert_equal 1, @unit1.bathrooms
+    assert_equal 1, @unit1.bedrooms
+  end
 end
