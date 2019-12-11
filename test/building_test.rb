@@ -55,8 +55,10 @@ class BuildingTest < Minitest::Test
     @building.add_unit(@unit2)
     @building.add_unit(@unit3)
     @unit2.add_renter(@renter1)
-    @building.annual_breakdown
     expected = {"Spencer"=>11988}
+    assert_equal expected, @building.annual_breakdown
+    @unit1.add_renter(@renter2)
+    expected = {"Jessie" => 14400, "Spencer" => 11988}
     assert_equal expected, @building.annual_breakdown
   end
 
